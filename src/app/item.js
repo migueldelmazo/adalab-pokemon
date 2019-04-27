@@ -2,6 +2,18 @@ import _ from 'lodash'
 import wu from '../libs/wu'
 import config from '../config.json'
 
+wu.create('router', 'itemRoute', {
+  urlPattern: config.itemUrl + ':id',
+  update: 'route.item'
+})
+
+wu.create('ensurer', 'setSelected', {
+  onChange: 'route.item',
+  args: 'route.item.params.id',
+  run: (id) => id === undefined ? '' : id,
+  update: 'data.selected'
+})
+
 wu.create('api', 'getItem', {
   onChange: 'data.items',
   request: {

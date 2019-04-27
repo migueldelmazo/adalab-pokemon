@@ -10,7 +10,9 @@ wu.create('ensurer', 'initData', {
       page: {
         offset: 0,
         limit: 2
-      }
+      },
+      search: '',
+      selected: ''
     }
   },
   update: 'data'
@@ -41,14 +43,20 @@ wu.create('setter', 'setSearch', {
 })
 
 wu.create('getter', 'itemsFilteredByName', {
-  args: ['data.items', 'data.search'],
-  run: (items, search) => {
+  args: ['data.items', 'data.search', 'data.selected'],
+  run: (items, search, selected) => {
     const validItems = _.filter(items, (item) => item.id)
     return _.map(validItems, (item) => {
       item.visible = _.includesString(item.name, search)
+      item.selected = item.id === selected
       return item
     })
   }
+})
+
+wu.create('getter', 'isSelectedItem', {
+  args: 'data.selected',
+  run: (selected) => !!selected
 })
 
 wu.create('getter', 'isApiLoading', {

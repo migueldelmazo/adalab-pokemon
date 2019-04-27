@@ -6,7 +6,9 @@ export default class ItemView extends Component {
   render() {
     return (
       <li>
-        { JSON.stringify(this.props) }
+        <a href={ this.props.href }>
+          { JSON.stringify(this.props) }
+        </a>
       </li>
     )
   }
