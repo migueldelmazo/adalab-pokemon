@@ -25,6 +25,10 @@ wu.create('watcher', 'initRouter', {
 
 wu.create('api', 'getItems', {
   onChange: 'data.page',
+  when: {
+    'data.page.offset': [_.isNumber, _.curryRight(_.gte)(0)],
+    'data.page.limit': [_.isNumber, _.curryRight(_.gt)(0)]
+  },
   request: {
     method: 'get',
     path: config.apiBaseUrl,
