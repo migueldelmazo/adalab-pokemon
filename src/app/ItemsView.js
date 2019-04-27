@@ -14,6 +14,7 @@ export default class ItemsView extends Component {
         <ItemView
           key={ item.id }
           id={ item.id }
+          evolutionName={ item.evolutionName }
           href={ item.href }
           img={ item.img }
           name={ item.name }
