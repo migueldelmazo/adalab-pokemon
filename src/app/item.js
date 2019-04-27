@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import wu from '../libs/wu'
+import config from '../config.json'
 
 wu.create('api', 'getItem', {
   onChange: 'data.items',
@@ -17,7 +18,7 @@ wu.create('api', 'getItem', {
           const newItem = response.body
           _.updateCollectionItem(items, 'name', {
             id: newItem.id + '',
-            href: '/pokemon/' + newItem.id,
+            href: config.itemUrl + newItem.id,
             img: _.get(newItem, 'sprites.front_default', ''),
             name: newItem.name,
             types: _.map(newItem.types, (type) => type.type.name)

@@ -1,4 +1,5 @@
 import wu from '../libs/wu'
+import config from '../config.json'
 
 wu.create('ensurer', 'initData', {
   onChange: 'app.ready',
@@ -18,7 +19,7 @@ wu.create('api', 'getItems', {
   onChange: 'data.page',
   request: {
     method: 'get',
-    path: 'https://pokeapi.co/api/v2/pokemon/',
+    path: config.apiBaseUrl,
     query: {
       args: 'data.page'
     }
