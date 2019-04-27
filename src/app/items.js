@@ -40,7 +40,7 @@ wu.create('api', 'getItems', {
     onCode200: [
       {
         args: ['data.items'],
-        run: (items, response) => response.body.results,
+        run: (items, response) => _.concat(items, response.body.results),
         update: 'data.items'
       }
     ]
