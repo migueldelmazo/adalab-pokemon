@@ -18,6 +18,11 @@ wu.create('ensurer', 'initData', {
   update: 'data'
 })
 
+wu.create('watcher', 'initRouter', {
+  onChange: 'app.ready',
+  run: () => _.navigate('/')
+})
+
 wu.create('api', 'getItems', {
   onChange: 'data.page',
   request: {
