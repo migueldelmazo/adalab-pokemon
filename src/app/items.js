@@ -50,3 +50,7 @@ wu.create('getter', 'itemsFilteredByName', {
     })
   }
 })
+
+wu.create('getter', 'isApiLoading', {
+  args: 'api.loading'
+})
