@@ -18,6 +18,7 @@ export default class ItemsView extends Component {
           href={ item.href }
           img={ item.img }
           name={ item.name }
+          selected={ item.selected }
           types={ item.types }
           visible={ item.visible }
         />

@@ -10,14 +10,25 @@ wu.create('ensurer', 'initData', {
       page: {
         offset: 0,
         limit: 2
-      }
+      },
+      search: '',
+      selected: ''
     }
   },
   update: 'data'
 })
 
+wu.create('watcher', 'initRouter', {
+  onChange: 'app.ready',
+  run: () => _.navigate('/')
+})
+
 wu.create('api', 'getItems', {
   onChange: 'data.page',
+  when: {
+    'data.page.offset': [_.isNumber, _.curryRight(_.gte)(0)],
+    'data.page.limit': [_.isNumber, _.curryRight(_.gt)(0)]
+  },
   request: {
     method: 'get',
     path: config.apiBaseUrl,
@@ -29,11 +40,17 @@ wu.create('api', 'getItems', {
     onCode200: [
       {
         args: ['data.items'],
-        run: (items, response) => response.body.results,
+        run: (items, response) => _.concat(items, response.body.results),
         update: 'data.items'
       }
     ]
   }
+})
+
+wu.create('setter', 'nextPage', {
+  args: 'data.page',
+  run: (page) => page.offset + page.limit,
+  update: 'data.page.offset'
 })
 
 wu.create('setter', 'setSearch', {
@@ -41,14 +58,20 @@ wu.create('setter', 'setSearch', {
 })
 
 wu.create('getter', 'itemsFilteredByName', {
-  args: ['data.items', 'data.search'],
-  run: (items, search) => {
+  args: ['data.items', 'data.search', 'data.selected'],
+  run: (items, search, selected) => {
     const validItems = _.filter(items, (item) => item.id)
     return _.map(validItems, (item) => {
       item.visible = _.includesString(item.name, search)
+      item.selected = item.id === selected
       return item
     })
   }
+})
+
+wu.create('getter', 'isSelectedItem', {
+  args: 'data.selected',
+  run: (selected) => !!selected
 })
 
 wu.create('getter', 'isApiLoading', {
