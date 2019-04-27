@@ -38,6 +38,12 @@ wu.create('api', 'getItems', {
   }
 })
 
+wu.create('setter', 'nextPage', {
+  args: 'data.page',
+  run: (page) => page.offset + page.limit,
+  update: 'data.page.offset'
+})
+
 wu.create('setter', 'setSearch', {
   update: 'data.search'
 })
