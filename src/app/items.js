@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import wu from '../libs/wu'
 import config from '../config.json'
 
@@ -35,7 +36,21 @@ wu.create('api', 'getItems', {
   }
 })
 
-wu.create('getter', 'items', {
-  args: ['data.items'],
-  run: (items) => items || []
+wu.create('setter', 'setSearch', {
+  update: 'data.search'
+})
+
+wu.create('getter', 'itemsFilteredByName', {
+  args: ['data.items', 'data.search'],
+  run: (items, search) => {
+    const validItems = _.filter(items, (item) => item.id)
+    return _.map(validItems, (item) => {
+      item.visible = _.includesString(item.name, search)
+      return item
+    })
+  }
+})
+
+wu.create('getter', 'isApiLoading', {
+  args: 'api.loading'
 })

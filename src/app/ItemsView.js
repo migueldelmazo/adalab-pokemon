@@ -9,7 +9,7 @@ export default class ItemsView extends Component {
   }
 
   renderItems() {
-    return this.get('items').map((item) => {
+    return this.get('itemsFilteredByName').map((item) => {
       return (
         <ItemView
           key={ item.id }
@@ -19,6 +19,7 @@ export default class ItemsView extends Component {
           img={ item.img }
           name={ item.name }
           types={ item.types }
+          visible={ item.visible }
         />
       )
     })
