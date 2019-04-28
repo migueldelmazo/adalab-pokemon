@@ -1,0 +1,113 @@
+@import '../styles/variables';
+
+.items-outer {
+  position: relative;
+  
+  &.items-outer--empty {
+    .items {
+      opacity: 0;
+    }
+    .items-not-found {
+      opacity: 1;
+    }
+  }
+  
+  // not found
+  
+  & .items-not-found {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    text-align: center;
+    
+    &-inner {
+      margin: 3rem;
+      padding: 3rem;
+      width: 50%;
+      height: 50%;
+      border-radius: 50%;
+      box-shadow: $default-box-shadow;
+      background: $cl-tertiary;
+    }
+  }
+  
+  // pagination
+  
+  .pagination {
+    overflow: hidden;
+    padding: 1rem 0;
+    max-height: 8rem;
+    text-align: center;
+    
+    &__next-page-button {
+      margin: 1rem;
+      padding: 1rem;
+      border-radius: 50%;
+      background: $cl-secondary;
+      transform: rotate(90deg);
+      cursor: pointer;
+      color: $cl-tertiary;
+      
+      &:hover {
+        animation-name: next-page-button-beat;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+    }
+    
+  }
+  
+  &.items--selected .pagination__next-page-button {
+    animation-name: next-page-button-hide;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+  }
+  
+}
+
+@keyframes next-page-button-beat {
+  0% {
+    box-shadow: 1px 1px 1.5rem $cl-secondary;
+    transform: rotate(90deg) scale(1);
+    background: $cl-secondary;
+    color: $cl-tertiary;
+  }
+  25% {
+    transform: rotate(90deg) scale(1.2);
+  }
+  40% {
+    transform: rotate(90deg) scale(1);
+    background: $cl-tertiary;
+    color: $cl-secondary;
+  }
+  60% {
+    transform: rotate(90deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(90deg) scale(1);
+    background: $cl-secondary;
+    color: $cl-tertiary;
+  }
+}
+
+@keyframes next-page-button-hide {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 10rem;
+  }
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+body.body--blocked {
+  overflow: hidden;
+}

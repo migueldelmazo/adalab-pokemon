@@ -1,10 +1,13 @@
 import React from 'react'
 import Component from '../libs/react'
+import config from '../config.json'
+import './Search.scss'
 
 export default class SearchView extends Component {
 
   onChange() {
-    return 'api'
+    // this view is rendered when this model properties change
+    return ['api', 'data.selected']
   }
 
   render() {
@@ -12,9 +15,10 @@ export default class SearchView extends Component {
       <div className='search'>
         <input
           autoFocus
+          className='search__input'
           type='text'
-          placeholder='Filtra Pokemons por nombre...'
-          disabled={ this.get('isApiLoading') }
+          placeholder={ config.i18n.search.placeholder }
+          disabled={ this.get('isApiLoading') || this.get('isSelectedItem') }
           onChange={ this.onEv('setSearch') }
         />
       </div>

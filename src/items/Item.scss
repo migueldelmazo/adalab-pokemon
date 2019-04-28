@@ -1,0 +1,240 @@
+@import '../styles/animations';
+@import '../styles/variables';
+
+.item {
+  
+  animation-name: opacity-from-0-to-1;
+  animation-duration: .2s;
+  
+  .item-inner {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 1rem;
+    width: 16.25rem;
+    height: 20rem;
+    border: 1px solid $cl-item-border;
+    box-shadow: $default-box-shadow;
+    transition: .2s;
+  }
+  
+  // item close button
+  
+  & .item__close-button {
+    display: none;
+  }
+  
+  &.item--selected .item__close-button {
+    z-index: 1;
+    display: block;
+    position: absolute;
+    right: 0;
+    margin: .5rem;
+    padding: .25rem;
+    cursor: pointer;
+    opacity: 0;
+    border-radius: 50%;
+    box-shadow: $default-box-shadow;
+    background: $cl-secondary;
+    font-size: 1.5rem;
+    color: $cl-tertiary;
+  }
+  
+  &.item--selected:hover .item__close-button {
+    animation-name: opacity-from-0-to-1;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    animation-duration: .2s;
+  }
+  
+  // item media
+  
+  & .item-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 50%;
+    background: $cl-item-media-bg;
+    transition: height .2s ease-in-out;
+    
+    // item media media
+    
+    &__img {
+      height: 100%;
+    }
+    
+    // item media caption
+    
+    &__caption {
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: .25rem .625rem;
+      background: $cl-item-media-caption-bg;
+      font-size: .875rem;
+      font-weight: bold;
+      color: $cl-item-secondary;
+    }
+    
+  }
+  
+  // item content
+    
+  & .item-content {
+    height: 50%;
+    padding: 1.5rem;
+    transition: height .2s ease-in-out;
+    background: $cl-tertiary;
+    
+    // item content name
+    
+    &__name {
+      text-transform: capitalize;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $cl-primary;
+    }
+    
+    // item content types
+  
+    &-types {
+      margin-top: .8rem;
+          
+      &__item {
+        display: inline-block;
+        margin-right: .5rem;
+        padding: 1px .3125rem;
+        border: 1px solid $cl-item-secondary;
+        border-radius: .3125rem;
+        text-transform: uppercase;
+        font-size: .8125rem;
+        color: $cl-item-secondary;
+      }
+      
+    }
+    
+    // item content definition
+    
+    &-definition {
+      margin-top: .8rem;
+      padding-left: .5rem;
+      border-left: .25rem solid $cl-item-secondary;
+      font-size: 1rem;
+      color: $cl-item-secondary;
+    }
+    
+    &-definition__description {
+      font-size: 1.25rem;
+      text-transform: capitalize;
+      color: $cl-primary;
+    }
+    
+  }
+  
+  // item corner
+    
+  & .item-corner {
+    position: absolute;
+    bottom: -6.25rem;
+    right: -6.25rem;
+    height: 12.5rem;
+    width: 12.5rem;
+    background-color: $cl-secondary;
+    border-radius: 6.25rem;
+    transform: scale(0);
+    transition: transform .2s ease-in-out;
+    
+    & .item-corner-arrow {
+      display: block;
+      padding: 2rem 0 0 3rem;
+      font-size: 3rem;
+      
+      &__icon {
+        font-size: 2rem;
+        color: $cl-tertiary;
+      }
+    }
+    
+  }
+  
+  // item hover
+  
+  &:hover {
+    &:not(.item--selected) {
+      .item-media {
+        height: 42%;
+      }
+      
+      .item-content {
+        height: 58%;
+      }
+      
+      .item-corner {
+        transform: scale(1.05, 1.05);
+      }
+    }
+  }
+  
+  // item selected
+
+  &.item--selected {
+    animation-name: item-selected;
+    animation-delay: .5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    
+    .item-inner {
+      cursor: default;
+    }
+  }
+  
+}
+
+// not selected
+
+.items--selected {
+  .item:not(.item--selected) {
+    animation-name: item-not-selected;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+  }
+}
+
+// animations
+
+@keyframes item-selected {
+  to {
+    opacity: 1;
+  }
+  20% {
+    transform: scale(1.25, 1.25);
+    opacity: 1;
+  }
+  40% {
+    position: relative;
+    transform: scale(.5, .5);
+    opacity: 0;
+  }
+  60% {
+    position: fixed;
+    transform: scale(.5, .5);
+    opacity: 0;
+  }
+  to {
+    position: fixed;
+    top: 20%;
+    transform: scale(1.5, 1.5);
+    opacity: 1;
+  }
+}
+
+@keyframes item-not-selected {
+  to {
+    transform: scale(.5, .5);
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
