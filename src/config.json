@@ -12,7 +12,7 @@
       "item": {
         "evolutionFrom": "Evoluciona de:"
       },
-      "notFound": "No have not found items"
+      "notFound": "No hemos encontrado Pokemos con este nombre :("
     },
     "search": {
       "placeholder": "Filtra Pokemons por nombre..."

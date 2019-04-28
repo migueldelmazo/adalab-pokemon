@@ -54,11 +54,7 @@ export default class ItemsView extends Component {
   }
   
   ensureBodyOverflow(isSelected) {
-    if (isSelected) {
-      document.body.classList.add('body--blocked')
-    } else {
-      document.body.classList.remove('body--blocked')
-    }
+    document.body.classList.toggle('body--blocked', isSelected)
   }
   
   getDivClassName(isNotFound, isSelected) {
