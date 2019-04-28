@@ -1,9 +1,8 @@
 import React from 'react'
 import Component from '../libs/react'
-import ItemsView from './ItemsView'
-import LoadingView from './LoadingView'
-import SearchView from './SearchView'
-import './Main.scss'
+import ItemsView from '../items/ItemsView'
+import LoadingView from '../loading/LoadingView'
+import SearchView from '../search/SearchView'
 import './App.scss'
 
 export default class AppView extends Component {

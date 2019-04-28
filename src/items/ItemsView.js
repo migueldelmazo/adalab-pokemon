@@ -43,7 +43,7 @@ export default class ItemsView extends Component {
             className='items-not-found-inner'
             alt={ config.i18n.items.notFound }
             src='/assets/imgs/pikachu-sad.png'
-            title='Pikachu'
+            title={ config.i18n.items.notFound }
           />
         </div>
       </div>
