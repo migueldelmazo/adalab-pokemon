@@ -7,6 +7,7 @@ import './Items.scss'
 export default class ItemsView extends Component {
 
   onChange() {
+    // this view is rendered when 'data' model property changes
     return 'data'
   }
 

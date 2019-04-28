@@ -5,6 +5,7 @@ import './Loading.scss'
 export default class AppView extends Component {
 
   onChange() {
+    // this view is rendered when 'api' model property changes
     return 'api'
   }
 

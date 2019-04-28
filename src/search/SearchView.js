@@ -6,6 +6,7 @@ import './Search.scss'
 export default class SearchView extends Component {
 
   onChange() {
+    // this view is rendered when this model properties change
     return ['api', 'data.selected']
   }
 
