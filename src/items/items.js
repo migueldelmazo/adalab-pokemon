@@ -27,8 +27,8 @@ wu.create('ensurer', 'initData', {
     return {
       items: [],
       page: {
-        offset: 0,
-        limit: 2
+        offset: config.items.page.offset,
+        limit: config.items.page.limit
       },
       search: '',
       selected: ''
