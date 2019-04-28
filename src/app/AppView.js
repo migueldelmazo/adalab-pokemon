@@ -1,6 +1,7 @@
 import React from 'react'
 import Component from '../libs/react'
 import ItemsView from './ItemsView'
+import LoadingView from './LoadingView'
 import SearchView from './SearchView'
 import './Main.scss'
 import './App.scss'
@@ -11,6 +12,7 @@ export default class AppView extends Component {
     return (
       <div className='layout'>
         <SearchView />
+        <LoadingView />
         <ItemsView />
         <div className='corner corner--top corner--left' />
         <div className='corner corner--top corner--right' />
