@@ -2,6 +2,12 @@
   "apiBaseUrl": "https://pokeapi.co/api/v2/pokemon/",
   "itemUrl": "/pokemon/",
   "i18n": {
+    "items": {
+      "item": {
+        "evolutionFrom": "Evoluciona de:"
+      },
+      "notFound": "No have not found items"
+    },
     "search": {
       "placeholder": "Filtra Pokemons por nombre..."
     }

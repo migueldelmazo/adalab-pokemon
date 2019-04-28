@@ -1,0 +1,38 @@
+@import '../styles/variables';
+
+.items-outer {
+  position: relative;
+  
+  &.items-outer--empty {
+    .items {
+      opacity: 0;
+    }
+    .items-not-found {
+      opacity: 1;
+    }
+  }
+  
+  & .items-not-found {
+    width: 100%;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    text-align: center;
+    
+    &-inner {
+      margin: 3rem;
+      padding: 3rem;
+      width: 35rem;
+      height: 35rem;
+      border-radius: 50%;
+      box-shadow: $default-box-shadow;
+      background: $cl-tertiary;
+    }
+  }
+  
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
