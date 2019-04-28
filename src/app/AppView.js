@@ -10,8 +10,8 @@ export default class AppView extends Component {
   render() {
     return (
       <div className='layout'>
-        <SearchView />
         <LoadingView />
+        <SearchView />
         <ItemsView />
         <div className='corner corner--top corner--left' />
         <div className='corner corner--top corner--right' />

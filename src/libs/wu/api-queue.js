@@ -2,12 +2,19 @@ import _ from 'lodash'
 import { wu } from './common'
 
 const ensureApiLoading = () => {
-  setTimeout(() => {
-    const isLoading = _.some(wu._private.api.queue, {
-      state: 'sending'
-    })
-    wu.model.set('api.loading', isLoading)
-  }, 100)
+  if (isApiLoading()) {
+    wu.model.set('api.loading', true)
+  } else {
+    setTimeout(() => {
+      wu.model.set('api.loading', isApiLoading())
+    }, 100)
+  }
+}
+
+const isApiLoading = () => {
+  return _.some(wu._private.api.queue, {
+    state: 'sending'
+  })
 }
 
 export default {

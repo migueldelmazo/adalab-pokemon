@@ -1,7 +1,11 @@
 @import '../styles/variables';
 
 .loading {
-  padding: 0 1.2rem;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   min-height: 4px;
   
   &-inner {
@@ -18,7 +22,7 @@
       width: 200px;
       height: 4px;
       background: $cl-secondary;
-      animation: loading 2s linear infinite;
+      animation: loading 1s linear infinite;
     }
     
   }
