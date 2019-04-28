@@ -1,0 +1,49 @@
+@import '../styles/colors';
+@import '../styles/variables';
+
+html {
+  font-size: $root-size;
+}
+
+body {
+  background: $cl-body-bg;
+}
+
+/* layouts */
+
+.layout {
+  margin: 1rem auto;
+  max-width: $layout-max-width;
+}
+
+/* corner */
+
+.corner {
+  position: fixed;
+  z-index: -1;
+  
+  &.corner--top {
+    top: 0;
+    height: 6.25rem;
+    width: 6.25rem;
+    background-color: $cl-primary;
+  }
+  
+  &.corner--bottom {
+    bottom: -10rem;
+    height: 10rem;
+    width: 10rem;
+    background-color: $cl-secondary;
+    border-radius: 50%;
+  }
+  
+  &.corner--left {
+    left: 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  &.corner--right {
+    right: 0;
+    transform: translate(50%, -50%) rotate(45deg);
+  }
+}
