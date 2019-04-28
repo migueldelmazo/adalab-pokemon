@@ -79,8 +79,10 @@ export default class ItemView extends Component {
     )
   }
 
-  onClickClose() {
+  onClickClose(ev) {
     window.history.back()
+    ev.stopPropagation()
+    ev.preventDefault()
   }
 
   render() {
