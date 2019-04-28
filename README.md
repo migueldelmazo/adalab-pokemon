@@ -6,7 +6,7 @@
 
 This technical exercise consists of making a catalog of Pokemons with a field to filter by name.
 
-The data is obtained from the API: https://pokeapi.co/api/v2/pokemon/
+The data is obtained from the API: https://pokeapi.co/
 
 To do the exercise:
 * The [Wu framework](https://github.com/migueldelmazo/wu) has been used for business logic.
@@ -14,3 +14,4 @@ To do the exercise:
 * **Sass** has been used for CSS.
 * An attempt has been made to create a generic catalog (as far as possible).
   For this reason [`config.json`](./src/config.json) file with **i18n** and **constants** has been created.
+* Exercise tested in Chrome and Firefox.

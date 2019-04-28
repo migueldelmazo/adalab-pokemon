@@ -1,5 +1,11 @@
 {
   "apiBaseUrl": "https://pokeapi.co/api/v2/pokemon/",
+  "items": {
+    "page": {
+      "offset": 0,
+      "limit": 9
+    }
+  },
   "itemUrl": "/pokemon/",
   "i18n": {
     "items": {

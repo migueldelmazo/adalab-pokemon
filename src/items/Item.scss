@@ -194,7 +194,7 @@
 
 // not selected
 
-.items.items--selected {
+.items--selected {
   .item:not(.item--selected) {
     animation-name: item-not-selected;
     animation-duration: .2s;
@@ -224,7 +224,7 @@
   }
   to {
     position: fixed;
-    top: 10rem;
+    top: 20%;
     transform: scale(1.5, 1.5);
     opacity: 1;
   }
