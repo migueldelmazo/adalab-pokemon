@@ -1,4 +1,9 @@
 {
   "apiBaseUrl": "https://pokeapi.co/api/v2/pokemon/",
-  "itemUrl": "/pokemon/"
+  "itemUrl": "/pokemon/",
+  "i18n": {
+    "search": {
+      "placeholder": "Filtra Pokemons por nombre..."
+    }
+  }
 }

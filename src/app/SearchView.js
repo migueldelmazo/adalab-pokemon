@@ -16,7 +16,7 @@ export default class SearchView extends Component {
           autoFocus
           className='search__input'
           type='text'
-          placeholder='Filtra Pokemons por nombre...'
+          placeholder={ config.i18n.search.placeholder }
           disabled={ this.get('isApiLoading') || this.get('isSelectedItem') }
           onChange={ this.onEv('setSearch') }
         />
